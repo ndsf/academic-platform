@@ -13,11 +13,13 @@ function promisify(fn) {
     };
 }
 
+const promisifiedUserSearch = await promisify(User.search);
+
 module.exports = {
     Query: {
         async getUsers() {
             try {
-                const promisifiedUserSearch = await promisify(User.search);
+                
                 const results = promisifiedUserSearch( { query_string: { query: "mengta4" } });
                 let res = [];
                 for (const result of results.hits.hits) {
