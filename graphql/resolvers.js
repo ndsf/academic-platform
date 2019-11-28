@@ -1,8 +1,9 @@
 const Item = require("../models/Item");
-
+const User = require("../models/User");
 module.exports = {
     Query: {
         items: async () => await Item.find(),
+        find_a_user: async(_, { userID }) => await User.findById(userID),
     },
     Mutation: {
         createItem: async (_, {Sch_name, title, abstract, references, field}, context) => {
